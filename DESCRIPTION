@@ -1,0 +1,14 @@
+Package: SimpleBathy
+Type: Package
+Title: Add bathymetric capabilities to SimpleMapper
+Version: 0.1
+Date: 2024-05-06
+Author: Thomas Bryce Kelly
+Maintainer: Thomas Bryce Kelly <tbkelly@alaska.edu>
+Description: More about what it does (maybe more than one line)
+License: MIT Licence (see LICENSE)
+Encoding: UTF-8
+LazyData: true
+Imports:
+  SimpleMapper
+RoxygenNote: 7.3.1
