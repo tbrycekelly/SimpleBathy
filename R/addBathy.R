@@ -19,10 +19,11 @@ addBathy = function(basemap,
                     verbose = T) {
   
   ## Determine spatial coverage of the map
-  usr = par('usr')
-  field = expand.grid(lon = seq(usr[1], usr[2], length.out = 100),
-                      lat = seq(usr[3], usr[4], length.out = 100))
-  field = basemap$projection(field$lon, field$lat, lon0 = -basemap$lon, lat0 = basemap$lat, inv = T) # lon = 0 in center of screen
+  #usr = par('usr')
+  #field = expand.grid(lon = seq(usr[1], usr[2], length.out = 100),
+  #                    lat = seq(usr[3], usr[4], length.out = 100))
+  #field = basemap$projection(field$lon, field$lat, lon0 = -basemap$lon, lat0 = basemap$lat, inv = T) # lon = 0 in center of screen
+  field = fieldOfView(basemap, 100)
   
   ## Calculate zoom if necessary
   if (is.null(n)) {
@@ -30,8 +31,8 @@ addBathy = function(basemap,
   }
   
   ## Retreive bathymetry tiles
-  bathy = getTiles(lon = field$longitude,
-                   lat = field$latitude,
+  bathy = getTiles(lon = field$field$longitude - basemap$lon, # pass actual longitudes (for loading)
+                   lat = field$field$latitude,
                    n = n)
   
   if (verbose) {
