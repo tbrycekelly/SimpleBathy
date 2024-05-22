@@ -30,6 +30,10 @@ addBathy = function(basemap,
     n = tileN(basemap$scale)
   }
   
+  if (is.null(ztrim) & !is.null(zlim)) {
+    ztrim = c(zlim[1], NA)
+  }
+  
   ## Retreive bathymetry tiles
   bathy = getTiles(lon = field$field$longitude - basemap$lon, # pass actual longitudes (for loading)
                    lat = field$field$latitude,
