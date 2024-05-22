@@ -11,7 +11,7 @@
 #' @export
 addBathy = function(basemap,
                     n = NULL,
-                    zlim = NULL,
+                    zlim = c(-6e3, 0),
                     ztrim = NULL,
                     pal = greyscale(255),
                     trim = T,

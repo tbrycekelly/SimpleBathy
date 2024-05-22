@@ -7,7 +7,7 @@
 addBathy(
   basemap,
   n = NULL,
-  zlim = NULL,
+  zlim = c(-6000, 0),
   ztrim = NULL,
   pal = greyscale(255),
   trim = T,
