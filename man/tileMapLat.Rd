@@ -9,7 +9,9 @@ tileMapLat(lat, delta = 30, offset = 90)
 \arguments{
 \item{lat}{a vector of latitude values}
 
-\item{n}{a grid (matrix or array) to be used for plotting}
+\item{delta}{the height of each tile in degrees}
+
+\item{offset}{offset}
 }
 \description{
 Determine latitude index for tiling

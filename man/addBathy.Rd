@@ -6,10 +6,9 @@
 \usage{
 addBathy(
   basemap,
-  n = NULL,
   zlim = c(-6000, 0),
   ztrim = NULL,
-  pal = greyscale(255),
+  pal = SimpleMapper::greyscale(128),
   trim = T,
   refine = 0,
   verbose = T

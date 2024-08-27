@@ -8,12 +8,13 @@
 #' @param refine an integer value used to refine (or subsample) the provided grid. Positive values will refine and negative values will subsample.
 #' @param verbose a boolean flag to turn on/off displayed messages
 #' @author Thomas Bryce Kelly
+#' @importFrom SimpleMapper greyscale fieldOfView
+#' @importFrom graphics par
 #' @export
 addBathy = function(basemap,
-                    n = NULL,
                     zlim = c(-6e3, 0),
                     ztrim = NULL,
-                    pal = greyscale(255),
+                    pal = SimpleMapper::greyscale(128),
                     trim = T,
                     refine = 0,
                     verbose = T) {
@@ -23,19 +24,17 @@ addBathy = function(basemap,
   #field = expand.grid(lon = seq(usr[1], usr[2], length.out = 100),
   #                    lat = seq(usr[3], usr[4], length.out = 100))
   #field = basemap$projection(field$lon, field$lat, lon0 = -basemap$lon, lat0 = basemap$lat, inv = T) # lon = 0 in center of screen
-  field = fieldOfView(basemap, 100)
+  field = SimpleMapper::fieldOfView(basemap, 100)
   
   ## Calculate zoom if necessary
-  if (is.null(n)) {
-    n = tileN(basemap$scale)
-  }
+  n = tileN(basemap$scale)
   
   if (is.null(ztrim) & !is.null(zlim)) {
     ztrim = c(zlim[1], NA)
   }
   
   ## Retreive bathymetry tiles
-  bathy = getTiles(lon = field$field$longitude - basemap$lon, # pass actual longitudes (for loading)
+  bathy = getTiles(lon = field$field$longitude + basemap$lon, # pass actual longitudes (for loading)
                    lat = field$field$latitude,
                    n = n)
   

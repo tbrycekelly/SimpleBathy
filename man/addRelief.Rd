@@ -6,10 +6,9 @@
 \usage{
 addRelief(
   basemap,
-  n = NULL,
   zlim = c(100, 3000),
-  pal = paste0(colorRampPalette(colors = c("lightgrey", "#000000"))(8), seq(10, 80,
-    length.out = 8)),
+  pal = paste0((grDevices::colorRampPalette(colors = c("lightgrey", "#000000")))(8),
+    seq(10, 80, length.out = 8)),
   trim = T,
   refine = 0,
   verbose = T
@@ -27,8 +26,6 @@ addRelief(
 \item{refine}{an integer value used to refine (or subsample) the provided grid. Positive values will refine and negative values will subsample.}
 
 \item{verbose}{a boolean flag to turn on/off displayed messages}
-
-\item{ztrim}{the values used to substitute for numeric values outside of zlim. E.g. an NA value will skip plotting.}
 }
 \description{
 Add a image layer to the map!

@@ -6,6 +6,9 @@
 \usage{
 tileN(scale)
 }
+\arguments{
+\item{scale}{the scale of the map in km}
+}
 \description{
 Add tile zoom
 }

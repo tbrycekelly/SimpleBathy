@@ -62,12 +62,6 @@ gebco2$Z = array(as.integer(gebco2$Z), dim = dim(gebco2$Z))
 gebco1$Z = array(as.integer(gebco1$Z), dim = dim(gebco1$Z))
 
 
-gebco1$lon[1] - diff(gebco1$lon[1:2])/2; gebco1$lon[length(gebco1$lon)] + diff(gebco1$lon[1:2])/2
-gebco5$lon[1] - diff(gebco5$lon[1:2])/2+360; gebco5$lon[length(gebco5$lon)] + diff(gebco5$lon[1:2])/2
-
-
-
-
 generateTiles = function(gebco, n, delta, fout) {
   lon.index = tileMapLon(gebco$lon, delta = 30)
   lat.index = tileMapLat(gebco$lat, delta = 30)
@@ -78,10 +72,11 @@ generateTiles = function(gebco, n, delta, fout) {
       tmp = list(lon = gebco$lon[l1],
                  lat = gebco$lat[l2],
                  Z = gebco$Z[l1,l2])
+      tmp$Z = array(as.integer(tmp$Z), dim = dim(tmp$Z))
       
       bathy.name = paste0('Bathy_', n, '_', i, '_', j)
       assign(bathy.name, value = tmp)
-      save(list = bathy.name, file = paste0('data/', bathy.name, '.rdata'))
+      save(list = bathy.name, file = paste0('data/', bathy.name, '.rdata'), compression_level = 6)
       
       message('Generated grid tile ', bathy.name, ' (', round(file.size(paste0('data/', bathy.name, '.rdata'))/1e3, 0), ' KB).')
       

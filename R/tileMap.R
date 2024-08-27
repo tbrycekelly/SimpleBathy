@@ -1,6 +1,7 @@
 #' @title Determine longitude index for tiling
 #' @param lon a vector of longitude values
-#' @param n a grid (matrix or array) to be used for plotting
+#' @param delta the width of each tile in degrees
+#' @param offset offset
 #' @author Thomas Bryce Kelly
 #' @export
 tileMapLon = function(lon, delta = 30, offset = 180) {
@@ -10,7 +11,8 @@ tileMapLon = function(lon, delta = 30, offset = 180) {
 
 #' @title Determine latitude index for tiling
 #' @param lat a vector of latitude values
-#' @param n a grid (matrix or array) to be used for plotting
+#' @param delta the height of each tile in degrees
+#' @param offset offset
 #' @author Thomas Bryce Kelly
 #' @export
 tileMapLat = function(lat, delta = 30, offset = 90) {
@@ -20,6 +22,7 @@ tileMapLat = function(lat, delta = 30, offset = 90) {
 
 #' @title Add tile zoom
 #' @author Thomas Bryce Kelly
+#' @param scale the scale of the map in km
 #' @export
 tileN = function(scale) {
   if (scale < 1000) {

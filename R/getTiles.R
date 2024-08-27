@@ -4,8 +4,13 @@
 #' @param n a grid (matrix or array) to be used for plotting
 #' @param verbose a boolean flag to turn on/off displayed messages
 #' @author Thomas Bryce Kelly
+#' @importFrom utils data
 #' @export
 getTiles = function(lon, lat, n, verbose = F) {
+  
+  n = round(n)
+  n = max(n, 1)
+  n = min(n, 4)
   
   lontiles = tileMapLon(lon)
   lattiles = tileMapLat(lat)
@@ -16,7 +21,7 @@ getTiles = function(lon, lat, n, verbose = F) {
   res = list()
   for (i in 1:nrow(grid)) {
     tmpname = paste0('Bathy_', n, '_', grid$lon[i], '_', grid$lat[i])
-    data(list = tmpname, package = 'SimpleBathy', envir = tmp)
+    utils::data(list = tmpname, package = 'SimpleBathy', envir = tmp)
     res[[i]] = eval(parse(text = tmpname), envir = tmp)
   }
   rm(tmp)

@@ -9,7 +9,9 @@ tileMapLon(lon, delta = 30, offset = 180)
 \arguments{
 \item{lon}{a vector of longitude values}
 
-\item{n}{a grid (matrix or array) to be used for plotting}
+\item{delta}{the width of each tile in degrees}
+
+\item{offset}{offset}
 }
 \description{
 Determine longitude index for tiling
