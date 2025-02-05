@@ -19,6 +19,12 @@ addBathy = function(basemap,
                     refine = 0,
                     verbose = T) {
   
+  basemap$history[[length(basemap$history) + 1]] = list(func = 'addBathy',
+                                                        arguments = list(
+                                                          zlim = zlim, ztrim = ztrim, pal = pal, trim = trim, refine = refine, verbose = verbose, ... = ...
+                                                        )
+  )
+  
   ## Determine spatial coverage of the map
   #usr = par('usr')
   #field = expand.grid(lon = seq(usr[1], usr[2], length.out = 100),
@@ -61,8 +67,8 @@ addBathy = function(basemap,
   if (verbose) {
     message(' Finished.')
   }
-  #basemap$bathy = bathy
-  basemap
+  
+  invisible(basemap)
 }
 
 

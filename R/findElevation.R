@@ -2,12 +2,23 @@
 #' @param lon Longitude values to get elevation for
 #' @param lat Latitude values to get elevation for
 #' @importFrom SimpleMapper standardize.longitude
+#' @export
 findElevation = function(lon, lat) {
+  
+  if (length(lon) != length(lat)) {
+    stop('Must provide longitudes and latitudes of same length.')
+  }
+  
+  if (any(lat > 90) | any(lat < -90)) {
+    warning('Provided latitude includes value outside range (-90, 90). Value will be clipped to valid range.')
+    lat = pmin(pmax(lat, -90), 90)
+  }
+  
   lon = SimpleMapper::standardize.longitude(lon)
   
   elevation = rep(NA, length(lon))
   
-  tiles = getTiles(lon, lat, 4)
+  tiles = getTiles(lon, lat, 5)
   
   for (i in 1:length(tiles)) { # Get elevation for whichever entries each tile is used for:
     k = sapply(1:length(lon),

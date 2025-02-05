@@ -1,6 +1,12 @@
 #' Add Isobaths to Map
 #' @export
-addIsobath = function(basemap, levels = NULL, col = NULL, lwd = NULL, minN = 0) {
+addIsobath = function(basemap, levels = NULL, col = NULL, lwd = NULL, minN = 0, ...) {
+  
+  basemap$history[[length(basemap$history) + 1]] = list(func = 'addIsobath',
+                                                        arguments = list(
+                                                          levels = levels, col = col, lwd = lwd, minN = minN, ... = ...
+                                                        )
+  )
   
   ## Determine map specifications:
   field = SimpleMapper::fieldOfView(basemap, 100)
@@ -45,12 +51,12 @@ addIsobath = function(basemap, levels = NULL, col = NULL, lwd = NULL, minN = 0) 
                                     lat = tmp[[j]]$y,
                                     lon0 = basemap$lon,
                                     lat0 = basemap$lat)
-          lines(proj$x, proj$y, col = col[which(tmp[[j]]$level == levels)], lwd = lwd)
+          lines(proj$x, proj$y, col = col[which(tmp[[j]]$level == levels)], lwd = lwd, ...)
         }
       }
     }
   }
   
   ## Return
-  map
+  invisible(basemap)
 }

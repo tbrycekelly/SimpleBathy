@@ -3,6 +3,7 @@
 export(addBathy)
 export(addIsobath)
 export(addRelief)
+export(findElevation)
 export(getTiles)
 export(tileMapLat)
 export(tileMapLon)

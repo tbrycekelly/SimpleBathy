@@ -4,7 +4,7 @@
 \alias{addIsobath}
 \title{Add Isobaths to Map}
 \usage{
-addIsobath(basemap, levels = NULL, col = NULL, lwd = NULL, minN = 0)
+addIsobath(basemap, levels = NULL, col = NULL, lwd = NULL, minN = 0, ...)
 }
 \description{
 Add Isobaths to Map
