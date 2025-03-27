@@ -1,4 +1,12 @@
 #' Add Isobaths to Map
+#' @importFrom grDevices contourLines
+#' @importFrom graphics lines
+#' @param basemap a list object from plotBasemap
+#' @param levels a vector of values on which to draw contours
+#' @param col color of the lines
+#' @param lwd width of the lines
+#' @param minN minimum points from which to draw a contour line from
+#' @param ... additional parameters passed on to lines()
 #' @export
 addIsobath = function(basemap, levels = NULL, col = NULL, lwd = NULL, minN = 0, ...) {
   

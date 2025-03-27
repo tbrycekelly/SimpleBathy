@@ -6,6 +6,19 @@
 \usage{
 addIsobath(basemap, levels = NULL, col = NULL, lwd = NULL, minN = 0, ...)
 }
+\arguments{
+\item{basemap}{a list object from plotBasemap}
+
+\item{levels}{a vector of values on which to draw contours}
+
+\item{col}{color of the lines}
+
+\item{lwd}{width of the lines}
+
+\item{minN}{minimum points from which to draw a contour line from}
+
+\item{...}{additional parameters passed on to lines()}
+}
 \description{
 Add Isobaths to Map
 }
