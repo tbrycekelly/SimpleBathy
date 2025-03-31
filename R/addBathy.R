@@ -26,10 +26,6 @@ addBathy = function(basemap,
   )
   
   ## Determine spatial coverage of the map
-  #usr = par('usr')
-  #field = expand.grid(lon = seq(usr[1], usr[2], length.out = 100),
-  #                    lat = seq(usr[3], usr[4], length.out = 100))
-  #field = basemap$projection(field$lon, field$lat, lon0 = -basemap$lon, lat0 = basemap$lat, inv = T) # lon = 0 in center of screen
   field = SimpleMapper::fieldOfView(basemap, 100)
   
   ## Calculate zoom if necessary
@@ -52,7 +48,7 @@ addBathy = function(basemap,
     if (verbose) { 
       message(' Plotting bathymetric layer ', i, ' of ', length(bathy), '.')
     }
-    basemap = SimpleMapper::addLayer(basemap,
+    SimpleMapper::addLayer(basemap,
                                      lon = bathy[[i]]$lon,
                                      lat = bathy[[i]]$lat,
                                      z = bathy[[i]]$Z,

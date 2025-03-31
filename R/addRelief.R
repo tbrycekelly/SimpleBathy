@@ -44,7 +44,7 @@ addRelief = function(basemap,
     if (verbose) { 
       message(' Plotting elevation relief layer ', i, ' of ', length(bathy), '.')
     }
-    basemap = SimpleMapper::addLayer(basemap,
+    SimpleMapper::addLayer(basemap,
                                      lon = bathy[[i]]$lon,
                                      lat = bathy[[i]]$lat,
                                      z = bathy[[i]]$Z,
